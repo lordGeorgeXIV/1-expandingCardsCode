@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    /*display: flex, pone todos los items lado a lado dentro del body */
+    display: flex;
+     /*alinea los items en el centro*/     
+    align-items: center;
+    /**/
+    justify-content: center;
+    /*para alinear los items en el centro la pagina debe tener una altura*/
+    height: 100vh;
+    /*no queremos que la barra de scroll se muestre automaticamente*/
+    overflow: hidden;
+    margin: 0;
+}  
+
+.container{
+    display: flex;
+    width: 50vw;
+}
+
+.panel{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    flex: 0.3;
+    margin: 10px;
+    position: relative;/*por que queremos que el h3 dentro sea absoluto*/
+    transition: flex 0.5s ease-in;
+    /*se crea la transicion para cuando el panel sea active*/
+}
+
+.panel h3{
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;/*para hacerlo invisible*/
+}
+
+.panel.active{
+    flex: 2;
+}
+
+.panel.active h3{
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/*configurar que se vean 3 paneles en vez de 5 en pantallas pequeñas*/
+@media (max-width:790px){
+    .container{
+        width: 50vw;
+    }
+
+    .panel:nth-of-type(4), .panel:nth-of-type(5){
+        display: none;
+    }
+}
+
+@media (max-width:480px){
+    .container{
+        width: 50vw;
+    }
+
+    .panel:nth-of-type(3), .panel:nth-of-type(4), .panel:nth-of-type(5){
+        display: none;
+    }
+}
